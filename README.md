@@ -1,0 +1,1 @@
+run bower install

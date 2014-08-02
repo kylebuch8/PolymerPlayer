@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
+<link rel="import" href="player-color-thief.html">
+
+<polymer-element name="player-songs" attributes="songs song">
+    <template>
+        <style>
+            core-header-panel {
+                background-color: black;   
+            }
+            
+            core-toolbar {
+                background-color: #121112;
+                color: white;
+                font-size: 18px;
+            }
+            
+            .song {
+                box-sizing: border-box;
+                float: left;
+                padding-left: 2px;
+                padding-right: 2px;
+                width: 50%;
+                height: 250px;
+                color: white;
+            }
+            
+            .bg {
+                height: 180px;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .footer {
+                box-sizing: border-box;
+                padding: 16px;   
+                font-size: 16px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            @media (min-width: 767px) {
+                .song {
+                    width: 25%;   
+                }
+            }
+            
+            @media (min-width: 1200px) {
+                .song {
+                    width: 20%;   
+                }
+            }
+        </style>
+        <core-header-panel mode="seamed" fit>
+            <core-toolbar>
+                <div flex>My Library</div>
+            </core-toolbar>
+                    
+            <core-selector selected="{{selected}}" layout horizontal wrap>
+                <template repeat="{{song in songs}}">
+                    <div class="song" hero-id="{{song.title}}" hero>
+                        <div class="bg" style="background-image: url(images/{{song.img}});">
+                            <player-color-thief song="{{song}}"></player-color-thief>
+                        </div>
+                        <div class="footer" style="background-color: {{song.dominantColor}}; color: {{song.textColor}};">
+                            {{song.title}}<br>
+                            <small>{{song.artist}}</small>
+                        </div>
+                    </div>
+                </template>
+            </core-selector>
+        </core-header-panel>
+    </template>
+    
+    <script>
+        Polymer('player-songs', {
+            selectedChanged: function () {
+                this.song = this.songs[this.selected]; 
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,51 @@
+[
+    {
+        "artist": "Hopesfall",
+        "title": "The Bending",
+        "img": "hopesfall.jpg",
+        "audioSrc": "the_bending.mp3"
+    },
+    {
+        "artist": "The Contortionist",
+        "title": "Holomovement",
+        "img": "the_contortionist.jpg",
+        "audioSrc": "holomovement.mp3"
+    },
+    {
+        "artist": "Thrice",
+        "title": "Paper Tigers",
+        "img": "thrice.jpg",
+        "audioSrc": "paper_tigers.mp3"
+    },
+    {
+        "artist": "Tycho",
+        "title": "Awake",
+        "img": "tycho.jpg",
+        "audioSrc": "awake.mp3"
+    },
+    {
+        "artist": "Veil of Maya",
+        "title": "It's Not Safe To Swim Today",
+        "img": "veil_of_maya.jpg",
+        "audioSrc": "its_not_safe_to_swim_today.mp3"
+    },
+    {
+        "artist": "Hum",
+        "title": "Why I Like The Robins",
+        "img": "hum.jpg",
+        "audioSrc": "why_i_like_the_robins.mp3"
+    },
+    {
+        "artist": "Pendulum",
+        "title": "The Island - Pt: 1 (Dawn)",
+        "img": "pendulum.jpg",
+        "audioSrc": "the_island_pt_1_dawn.mp3"
+    },
+    {
+        "artist": "Minus The Bear",
+        "title": "The Game Neede Me",
+        "img": "minus_the_bear.jpg",
+        "audioSrc": "the_game_needed_me.mp3"
+    }
+    
+]

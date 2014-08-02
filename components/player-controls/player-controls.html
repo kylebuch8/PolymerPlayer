@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/core-icons/iconsets/av-icons.html">
+
+<polymer-element name="player-controls" attributes="song currentSong" layout horizontal>
+    <template>
+        <style>
+            :host {
+                padding-right: 8px;   
+            }
+            
+            img {
+                margin-right: 8px;   
+            }
+        </style>
+        
+        <img src="../../images/{{currentSong.img}}" style="max-height: 100%;">
+        <div layout vertical self-center flex>
+            {{currentSong.title}}<br>
+            <small>{{currentSong.artist}}</small>
+        </div>
+        <paper-icon-button icon="{{playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
+        
+    </template>
+    
+    <script>
+        Polymer('player-controls', {
+            playing: false,
+            
+            observe: {
+                "currentSong": "playSong"  
+            },
+            
+            playSong: function () {
+                /*var audio = document.createElement('audio');
+                audio.setAttribute('src', '../../music/' + this.currentSong.audioSrc);
+                
+                this.audioElement = this.appendChild(audio);
+                this.togglePlay();*/
+            },
+            
+            togglePlay: function () {  
+                if (!this.playing) {
+                    //this.audioElement.play();   
+                } else {
+                    //this.audioElement.pause();   
+                }
+                
+                this.playing = !this.playing;
+            }
+        });
+    </script>
+</polymer-element>

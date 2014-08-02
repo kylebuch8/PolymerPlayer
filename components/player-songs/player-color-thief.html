@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="player-color-thief" attributes="song">
+    <template>
+        <img id="img" src="images/{{song.img}}" style="display: none;">
+    </template>
+    
+    <script src="../../bower_components/color-thief/dist/color-thief.min.js"></script>
+    <script>
+        (function () {
+            function componentToHex(c) {
+                var hex = c.toString(16);
+                return hex.length == 1 ? "0" + hex : hex;
+            }
+
+            function rgbToHex(r, g, b) {
+                return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+            }
+            
+            function getContrast50(hexcolor){
+                hexcolor = hexcolor.replace('#', '');
+                return (parseInt(hexcolor, 16) > 0xffffff/2) ? '#333' : 'white';
+            }
+
+            Polymer('player-color-thief', {
+                ready: function () {
+                    var that = this;
+
+                    this.$.img.addEventListener('load', function () {
+                        var colorThief = new ColorThief(),
+                            rgb = colorThief.getColor(that.$.img);
+
+                        that.song.dominantColor = rgbToHex(rgb[0], rgb[1], rgb[2]);
+                        that.song.textColor = getContrast50(that.song.dominantColor);
+                    });
+                }
+            });
+        }());
+    </script>
+</polymer-element>

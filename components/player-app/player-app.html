@@ -1,0 +1,69 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/core-icons/iconsets/av-icons.html">
+<link rel="import" href="../player-songs/player-songs.html">
+<link rel="import" href="../player-song/player-song.html">
+<link rel="import" href="../player-controls/player-controls.html">
+
+<polymer-element name="player-app" attributes="url" vertical layout>
+    <template>
+        <style>
+            core-animated-pages {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 64px;
+            }
+            
+            player-controls {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 64px;
+            }
+            
+            .player img {
+                padding-right: 8px;   
+            }
+        </style>
+        
+        <core-ajax auto handleAs="json" url="{{url}}" response="{{songs}}"></core-ajax>
+        
+        <core-animated-pages selected="{{selected}}" transitions="hero-transition cross-fade cross-fade-delayed">
+            <player-songs name="songs" songs="{{songs}}" song="{{song}}" on-core-activate="{{songSelect}}"></player-songs>
+            
+            <player-song name="song" song="{{song}}" currentSong="{{currentSong}}"></player-song>
+        </core-animated-pages>
+        
+        <player-controls song="{{song}}" currentSong="{{currentSong}}"></player-controls>
+    </template>
+    
+    <script>
+        Polymer('player-app', {
+            selected: 'songs',
+            
+            eventDelegates: {
+                'main': 'showSongs'
+            },
+                
+            showSongs: function () {
+                this.selected = 'songs';  
+            },
+            
+            showSong: function () {
+                this.selected = 'song';  
+            },
+            
+            songSelect: function () {
+                if (this.song) {
+                    this.showSong();
+                }
+            }
+        });
+    </script>
+</polymer-element>
