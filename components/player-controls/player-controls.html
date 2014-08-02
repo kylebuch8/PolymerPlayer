@@ -11,15 +11,16 @@
             
             img {
                 margin-right: 8px;   
+                max-height: 100%;
             }
         </style>
         
-        <img src="../../images/{{currentSong.img}}" style="max-height: 100%;">
+        <img hidden?="{{!currentSong}}" src="../../images/{{currentSong.img}}">
         <div layout vertical self-center flex>
             {{currentSong.title}}<br>
             <small>{{currentSong.artist}}</small>
         </div>
-        <paper-icon-button icon="{{playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
+        <paper-icon-button hidden?="{{!currentSong}}" icon="{{playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         
     </template>
     
@@ -27,8 +28,10 @@
         Polymer('player-controls', {
             playing: false,
             
+            playingSong: {},
+            
             observe: {
-                "currentSong": "playSong"  
+                "currentSong": "togglePlay"  
             },
             
             playSong: function () {
@@ -37,16 +40,23 @@
                 
                 this.audioElement = this.appendChild(audio);
                 this.togglePlay();*/
+                
+                this.togglePlay();
             },
             
             togglePlay: function () {  
-                if (!this.playing) {
+                if (this.currentSong.title !== this.playingSong.title) {
+                    console.log('in here');   
+                }
+                /*if (!this.playing) {
                     //this.audioElement.play();   
                 } else {
                     //this.audioElement.pause();   
                 }
                 
-                this.playing = !this.playing;
+                this.currentSong.playing = !this.currentSong.playing;
+                
+                this.playing = !this.playing;*/
             }
         });
     </script>

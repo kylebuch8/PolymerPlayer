@@ -19,28 +19,30 @@
                 background: rgba(0, 0, 0, 0.1);   
             }
             
-            paper-icon-button,
-            paper-fab {
+            paper-icon-button {
                 color: white;
             }
             
-            paper-fab {
-                position: absolute;
-                right: 16px;
-                bottom: 25%;
-            }
-            
-            h3 {
+            h2 {
                 padding: 0;
                 margin: 0;
+                width: 75%;
+                font-weight: 400;
+                font-size: 22px;
             }
             
             .footer {
                 position: absolute;
                 left: 0;
                 right: 0;
-                padding: 16px;
+                padding: 32px 16px;
                 bottom: 0;
+            }
+            
+            paper-fab {
+                position: absolute;
+                right: 16px;
+                top: -28px;
             }
         </style>
         
@@ -51,16 +53,13 @@
                 </core-toolbar>
                 
                 <div class="footer" style="background-color: {{song.dominantColor}}; color: {{song.textColor}};">
-                    <h3>{{song.title}}</h3>
-                    {{song.artist}}
+                    <h2>{{song.title}}</h2>
+                    <small>{{song.artist}}</small>
+                    
+                    <paper-fab icon="{{song.playing ? 'av:pause' : 'av:play-arrow'}}" cross-fade-delayed on-tap="{{toggleSong}}" style="background-color: {{song.dominantColor}}; color: {{song.textColor}};"></paper-fab>
                 </div>
             </div>
-            
-            <paper-fab icon="av:play-arrow" cross-fade-delayed on-tap="{{playSong}}" style="background-color: {{song.dominantColor}}; color: {{song.textColor}};"></paper-fab>
         </div>
-        <!--<div cross-fade-delayed>
-            {{song.title}}
-        </div>-->
     </template>
     
     <script>
@@ -69,8 +68,10 @@
                 this.fire('main');   
             },
             
-            playSong: function () {
-                this.currentSong = this.song;
+            toggleSong: function () {
+                if (this.song.title !== this.currentSong.title) {
+                    this.currentSong = this.song;
+                }
             }
         });
     </script>

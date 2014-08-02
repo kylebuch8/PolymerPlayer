@@ -32,7 +32,7 @@
             }
         </style>
         
-        <core-ajax auto handleAs="json" url="{{url}}" response="{{songs}}"></core-ajax>
+        <core-ajax auto handleAs="json" url="{{url}}" response="{{songs}}" on-core-response="{{songsLoaded}}"></core-ajax>
         
         <core-animated-pages selected="{{selected}}" transitions="hero-transition cross-fade cross-fade-delayed">
             <player-songs name="songs" songs="{{songs}}" song="{{song}}" on-core-activate="{{songSelect}}"></player-songs>
@@ -49,6 +49,14 @@
             
             eventDelegates: {
                 'main': 'showSongs'
+            },
+            
+            songsLoaded: function () {
+                this.songs.forEach(function (song) {
+                    song.playing = false; 
+                });
+                
+                this.currentSong = this.songs[0]; 
             },
                 
             showSongs: function () {

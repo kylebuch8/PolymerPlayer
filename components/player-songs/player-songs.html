@@ -19,7 +19,6 @@
             
             .song {
                 box-sizing: border-box;
-                float: left;
                 padding-left: 2px;
                 padding-right: 2px;
                 width: 50%;
@@ -42,6 +41,10 @@
                 text-overflow: ellipsis;
             }
             
+            .title {
+                font-weight: 500;   
+            }
+            
             @media (min-width: 767px) {
                 .song {
                     width: 25%;   
@@ -60,14 +63,14 @@
             </core-toolbar>
                     
             <core-selector selected="{{selected}}" layout horizontal wrap>
-                <template repeat="{{song in songs}}">
-                    <div class="song" hero-id="{{song.title}}" hero>
-                        <div class="bg" style="background-image: url(images/{{song.img}});">
-                            <player-color-thief song="{{song}}"></player-color-thief>
+                <template repeat="{{sng, i in songs}}">
+                    <div class="song" hero-id="{{sng.title}}" hero>
+                        <div class="bg" style="background-image: url(images/{{sng.img}});">
+                            <player-color-thief song="{{sng}}"></player-color-thief>
                         </div>
-                        <div class="footer" style="background-color: {{song.dominantColor}}; color: {{song.textColor}};">
-                            {{song.title}}<br>
-                            <small>{{song.artist}}</small>
+                        <div class="footer" style="background-color: {{sng.dominantColor}}; color: {{sng.textColor}};">
+                            <span class="title">{{sng.title}}</span><br>
+                            <small>{{sng.artist}}</small>
                         </div>
                     </div>
                 </template>
