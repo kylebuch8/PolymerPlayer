@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/core-icons/iconsets/av-icons.html">
+<link rel="import" href="../../bower_components/core-signals/core-signals.html">
 
 <polymer-element name="player-controls" attributes="song currentSong" layout horizontal>
     <template>
@@ -16,14 +17,17 @@
             }
         </style>
         
+        <core-signals on-core-signal-new-song="{{newSong}}"></core-signals>
+        <core-signals on-core-signal-toggle-play="{{togglePlay}}"></core-signals>
+        
         <img hidden?="{{!currentSong}}" src="images/{{currentSong.img}}">
         <div layout vertical self-center flex>
             {{currentSong.title}}<br>
             <small>{{currentSong.artist}}</small>
         </div>
-        <paper-icon-button hidden?="{{!currentSong}}" icon="{{playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
+        <paper-icon-button hidden?="{{!currentSong}}" icon="{{currentSong.playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         
-<!--        <audio id="audio" preload="true" src="music/{{currentSong.audioSrc}}"></audio>-->
+        <audio id="audio" preload="true" src="music/{{playingSong.audioSrc}}"></audio>
 
     </template>
     
@@ -33,24 +37,44 @@
             
             playingSong: {},
             
-            observe: {
-                "currentSong": "togglePlay"  
+            ready: function () {
+                var that = this;
+                
+                this.$.audio.addEventListener('ended', function () {
+                    that.$.audio.pause();
+                    that.$.audio.currentTime = 0;
+                    that.togglePlay();
+                });
             },
             
-            playSong: function () {
-                this.togglePlay();
+            newSong: function (event, song) {
+                var that = this;
+                this.currentSong.playing = false;
+                
+                this.currentSong = song;
+                this.currentSong.playing = true;
+                
+                this.playingSong = this.currentSong;
+                
+                setTimeout(function () {
+                    that.$.audio.play();
+                }, 0);
             },
             
-            togglePlay: function () {  
-                if (!this.playing) {
-                    this.$.audio.play();   
-                } else {
+            togglePlay: function () {
+                var that = this;
+                
+                if (this.currentSong.playing) {
                     this.$.audio.pause();   
+                } else {
+                    this.playingSong = this.currentSong;
+                    
+                    setTimeout(function () {
+                        that.$.audio.play();
+                    }, 0);
                 }
                 
                 this.currentSong.playing = !this.currentSong.playing;
-                
-                this.playing = !this.playing;
             }
         });
     </script>
