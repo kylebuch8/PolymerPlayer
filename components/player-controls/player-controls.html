@@ -3,29 +3,34 @@
 <link rel="import" href="../../bower_components/core-icons/iconsets/av-icons.html">
 <link rel="import" href="../../bower_components/core-signals/core-signals.html">
 
-<polymer-element name="player-controls" attributes="song currentSong" layout horizontal>
+<polymer-element name="player-controls" attributes="song currentSong">
     <template>
         <style>
             :host {
+                box-sizing: border-box;
                 padding-right: 8px;
                 background-color: white;
+                width: 100%;
             }
             
             img {
-                margin-right: 8px;   
-                max-height: 100%;
+                margin-right: 8px;
+                width: 64px;
+                height: 64px;
             }
         </style>
         
         <core-signals on-core-signal-new-song="{{newSong}}"></core-signals>
         <core-signals on-core-signal-toggle-play="{{togglePlay}}"></core-signals>
         
-        <img hidden?="{{!currentSong}}" src="images/{{currentSong.img}}">
-        <div layout vertical self-center flex>
-            {{currentSong.title}}<br>
-            <small>{{currentSong.artist}}</small>
+        <div layout horizontal>
+            <img hidden?="{{!currentSong}}" src="images/{{currentSong.img}}">
+            <div layout vertical self-center flex>
+                {{currentSong.title}}<br>
+                <small>{{currentSong.artist}}</small>
+            </div>
+            <paper-icon-button hidden?="{{!currentSong}}" icon="{{currentSong.playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         </div>
-        <paper-icon-button hidden?="{{!currentSong}}" icon="{{currentSong.playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         
         <audio id="audio" preload="true"></audio>
 
