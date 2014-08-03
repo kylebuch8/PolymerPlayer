@@ -6,7 +6,8 @@
     <template>
         <style>
             :host {
-                padding-right: 8px;   
+                padding-right: 8px;
+                background-color: white;
             }
             
             img {
@@ -15,13 +16,15 @@
             }
         </style>
         
-        <img hidden?="{{!currentSong}}" src="../../images/{{currentSong.img}}">
+        <img hidden?="{{!currentSong}}" src="images/{{currentSong.img}}">
         <div layout vertical self-center flex>
             {{currentSong.title}}<br>
             <small>{{currentSong.artist}}</small>
         </div>
         <paper-icon-button hidden?="{{!currentSong}}" icon="{{playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         
+<!--        <audio id="audio" preload="true" src="music/{{currentSong.audioSrc}}"></audio>-->
+
     </template>
     
     <script>
@@ -35,28 +38,19 @@
             },
             
             playSong: function () {
-                /*var audio = document.createElement('audio');
-                audio.setAttribute('src', '../../music/' + this.currentSong.audioSrc);
-                
-                this.audioElement = this.appendChild(audio);
-                this.togglePlay();*/
-                
                 this.togglePlay();
             },
             
             togglePlay: function () {  
-                if (this.currentSong.title !== this.playingSong.title) {
-                    console.log('in here');   
-                }
-                /*if (!this.playing) {
-                    //this.audioElement.play();   
+                if (!this.playing) {
+                    this.$.audio.play();   
                 } else {
-                    //this.audioElement.pause();   
+                    this.$.audio.pause();   
                 }
                 
                 this.currentSong.playing = !this.currentSong.playing;
                 
-                this.playing = !this.playing;*/
+                this.playing = !this.playing;
             }
         });
     </script>

@@ -18,6 +18,7 @@
             }
             
             .song {
+                float: left;
                 box-sizing: border-box;
                 padding-left: 2px;
                 padding-right: 2px;
@@ -62,7 +63,7 @@
                 <div flex>My Library</div>
             </core-toolbar>
                     
-            <core-selector selected="{{selected}}" layout horizontal wrap>
+            <core-selector selected="{{selected}}">
                 <template repeat="{{sng, i in songs}}">
                     <div class="song" hero-id="{{sng.title}}" hero>
                         <div class="bg" style="background-image: url(images/{{sng.img}});">
