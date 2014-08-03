@@ -27,7 +27,7 @@
         </div>
         <paper-icon-button hidden?="{{!currentSong}}" icon="{{currentSong.playing ? 'av:pause' : 'av:play-arrow'}}" self-center on-tap="{{togglePlay}}"></paper-icon-button>
         
-        <audio id="audio" preload="true" src="music/{{playingSong.audioSrc}}"></audio>
+        <audio id="audio" preload="true"></audio>
 
     </template>
     
@@ -55,6 +55,8 @@
                 this.currentSong.playing = true;
                 
                 this.playingSong = this.currentSong;
+                
+                this.$.audio.setAttribute('src', 'music/' + this.playingSong.audioSrc);
                 
                 setTimeout(function () {
                     that.$.audio.play();
