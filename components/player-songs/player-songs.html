@@ -8,7 +8,8 @@
     <template>
         <style>
             core-header-panel {
-                background-color: black;   
+                background-color: black;  
+                height: 100%;
             }
             
             core-toolbar {
@@ -18,13 +19,18 @@
             }
             
             .song {
-                float: left;
                 box-sizing: border-box;
                 padding-left: 2px;
                 padding-right: 2px;
                 width: 50%;
                 height: 250px;
                 color: white;
+                position: relative;
+                will-change: transform;
+            }
+            
+            .song[needZ] {
+                z-index: 10001;
             }
             
             .bg {
@@ -58,20 +64,22 @@
                 }
             }
         </style>
-        <core-header-panel mode="seamed" fit>
+        <core-header-panel mode="seamed">
             <core-toolbar>
                 <div flex>My Library</div>
             </core-toolbar>
                     
-            <core-selector selected="{{selected}}">
+            <core-selector selected="{{selected}}" layout horizontal wrap>
                 <template repeat="{{sng, i in songs}}">
-                    <div class="song" hero-id="{{sng.title}}" hero>
-                        <div class="bg" style="background-image: url(images/{{sng.img}});">
-                            <player-color-thief song="{{sng}}"></player-color-thief>
-                        </div>
-                        <div class="footer" style="background-color: {{sng.dominantColor}}; color: {{sng.textColor}};">
-                            <span class="title">{{sng.title}}</span><br>
-                            <small>{{sng.artist}}</small>
+                    <div class="song" needZ?="{{song.title === sng.title}}">
+                        <div hero-id="{{sng.title}}" hero>
+                            <div class="bg" style="background-image: url(images/{{sng.img}});">
+                                <player-color-thief song="{{sng}}"></player-color-thief>
+                            </div>
+                            <div class="footer" style="background-color: {{sng.dominantColor}}; color: {{sng.textColor}};">
+                                <span class="title">{{sng.title}}</span><br>
+                                <small>{{sng.artist}}</small>
+                            </div>
                         </div>
                     </div>
                 </template>

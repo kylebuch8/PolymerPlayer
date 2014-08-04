@@ -32,6 +32,8 @@
 
                         that.song.dominantColor = rgbToHex(rgb[0], rgb[1], rgb[2]);
                         that.song.textColor = getContrast50(that.song.dominantColor);
+                        
+                        that.parentElement.removeChild(that);
                     });
                 }
             });
