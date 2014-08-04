@@ -46,6 +46,29 @@
         "title": "The Game Needed Me",
         "img": "minus_the_bear.jpg",
         "audioSrc": "the_game_needed_me.mp3"
+    },
+    {
+        "artist": "Animals As Leaders",
+        "title": "Behaving Badly",
+        "img": "animals_as_leaders.jpg",
+        "audioSrc": "behaving_badly.mp3"
+    },
+    {
+        "artist": "The Mars Volta",
+        "title": "Televators",
+        "img": "the_mars_volta.jpg",
+        "audioSrc": "televators.mp3"
+    },
+    {
+        "artist": "Born of Osiris",
+        "title": "Recreate",
+        "img": "born_of_osiris.jpg",
+        "audioSrc": "recreate.mp3"
+    },
+    {
+        "artist": "He Is Legend",
+        "title": "The Primarily Blues",
+        "img": "he_is_legend.jpg",
+        "audioSrc": "the_primarily_blues.mp3"
     }
-    
 ]
