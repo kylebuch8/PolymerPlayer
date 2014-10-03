@@ -46,5 +46,17 @@
         "title": "The Game Needed Me",
         "img": "minus_the_bear.jpg",
         "audioSrc": "the_game_needed_me.mp3"
+    },
+    {
+        "artist": "Born of Osiris",
+        "title": "Recreate",
+        "img": "born_of_osiris.jpg",
+        "audioSrc": "recreate.mp3"
+    },
+    {
+        "artist": "The Mars Volta",
+        "title": "Televators",
+        "img": "the_mars_volta.jpg",
+        "audioSrc": "televators.mp3"
     }
 ]
