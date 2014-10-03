@@ -2,17 +2,19 @@
   "name": "core-tooltip",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#>=0.3.0 <1.0.0"
+    "polymer": "Polymer/polymer#master",
+    "paper-focusable": "Polymer/paper-focusable#master",
+    "core-icon-button": "Polymer/core-icon-button#master",
+    "paper-fab": "Polymer/paper-fab#master"
   },
   "homepage": "https://github.com/Polymer/core-tooltip",
-  "version": "0.3.4",
-  "_release": "0.3.4",
+  "_release": "f004620bb4",
   "_resolution": {
-    "type": "version",
-    "tag": "0.3.4",
-    "commit": "e13abb15d21c7b658050bef0d7e625d1661b0a87"
+    "type": "branch",
+    "branch": "master",
+    "commit": "f004620bb4555e897344775964a7c7d5638506b5"
   },
   "_source": "git://github.com/Polymer/core-tooltip.git",
-  "_target": ">=0.3.0 <1.0.0",
+  "_target": "master",
   "_originalSource": "Polymer/core-tooltip"
 }

@@ -2,27 +2,25 @@
   "name": "core-doc-viewer",
   "private": true,
   "dependencies": {
-    "core-ajax": "Polymer/core-ajax#>=0.3.0 <1.0.0",
-    "core-layout": "Polymer/core-layout#>=0.3.0 <1.0.0",
-    "core-menu": "Polymer/core-menu#>=0.3.0 <1.0.0",
-    "core-item": "Polymer/core-item#>=0.3.0 <1.0.0",
-    "core-toolbar": "Polymer/core-toolbar#>=0.3.0 <1.0.0",
-    "core-icons": "Polymer/core-icons#>=0.3.0 <1.0.0",
-    "core-icon-button": "Polymer/core-icon-button#>=0.3.0 <1.0.0",
-    "core-header-panel": "Polymer/core-header-panel#>=0.3.0 <1.0.0",
-    "context-free-parser": "Polymer/context-free-parser#>=0.3.0 <1.0.0",
-    "marked-element": "PolymerLabs/marked-element#>=0.3.0 <1.0.0",
-    "highlightjs-element": "PolymerLabs/highlightjs-element#>=0.3.0 <1.0.0"
+    "core-ajax": "Polymer/core-ajax#master",
+    "core-menu": "Polymer/core-menu#master",
+    "core-item": "Polymer/core-item#master",
+    "core-toolbar": "Polymer/core-toolbar#master",
+    "core-icons": "Polymer/core-icons#master",
+    "core-icon-button": "Polymer/core-icon-button#master",
+    "core-header-panel": "Polymer/core-header-panel#master",
+    "context-free-parser": "Polymer/context-free-parser#master",
+    "marked-element": "PolymerLabs/marked-element#master",
+    "prettify-element": "Polymer/prettify-element#master"
   },
   "homepage": "https://github.com/Polymer/core-doc-viewer",
-  "version": "0.3.4",
-  "_release": "0.3.4",
+  "_release": "ef90aadbb9",
   "_resolution": {
-    "type": "version",
-    "tag": "0.3.4",
-    "commit": "9bf119ac9100a241f5ef64a9e87a7663675a3622"
+    "type": "branch",
+    "branch": "master",
+    "commit": "ef90aadbb99b8d0b319d19d03da70258a7d58890"
   },
   "_source": "git://github.com/Polymer/core-doc-viewer.git",
-  "_target": ">=0.3.0 <1.0.0",
+  "_target": "master",
   "_originalSource": "Polymer/core-doc-viewer"
 }

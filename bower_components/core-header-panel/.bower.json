@@ -2,17 +2,16 @@
   "name": "core-header-panel",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#>=0.3.0 <1.0.0"
+    "polymer": "Polymer/polymer#master"
   },
   "homepage": "https://github.com/Polymer/core-header-panel",
-  "version": "0.3.4",
-  "_release": "0.3.4",
+  "_release": "5b1aca8fa4",
   "_resolution": {
-    "type": "version",
-    "tag": "0.3.4",
-    "commit": "17fe3618b42a01e8b813e877df69e47bb875856d"
+    "type": "branch",
+    "branch": "master",
+    "commit": "5b1aca8fa43a8aa85e35c8c310b8509e9a48dc24"
   },
   "_source": "git://github.com/Polymer/core-header-panel.git",
-  "_target": ">=0.3.0 <1.0.0",
+  "_target": "master",
   "_originalSource": "Polymer/core-header-panel"
 }
